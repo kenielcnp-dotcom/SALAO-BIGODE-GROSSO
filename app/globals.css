@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #090b0c;
+  --color-panel: #101315;
+  --color-panel-2: #15191b;
+  --color-line: #252a2b;
+  --color-gold: #d4ae61;
+  --color-gold-2: #f2d690;
+  --color-cream: #f4efe5;
+  --color-muted: #9fa5a3;
+  --color-success: #67bd8c;
+  --color-danger: #dd706b;
+  --color-info: #7eb8d9;
+  --color-purple: #b48dd5;
+
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-dm-mono);
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-cream);
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-gold font-mono text-[11px] tracking-[1.6px] uppercase;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-gold bg-gradient-to-br from-[#dcb967] to-[#a87d32] px-5 py-3 text-xs font-extrabold tracking-wide text-[#17120b] transition hover:-translate-y-px hover:brightness-110;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-gold/70 bg-transparent px-5 py-3 text-xs font-extrabold tracking-wide text-gold-2 transition hover:brightness-110;
+  }
+
+  .panel {
+    @apply rounded-lg border border-line bg-panel;
+  }
+
+  .status-pill {
+    @apply inline-block rounded-full bg-[#243c31] px-2 py-1 font-mono text-[10px] text-[#8ad4a5];
+  }
+  .status-pill-warn {
+    @apply bg-[#493b1c] text-[#e0bd6d];
+  }
+  .status-pill-red {
+    @apply bg-[#482524] text-[#ed9e9a];
+  }
+}
