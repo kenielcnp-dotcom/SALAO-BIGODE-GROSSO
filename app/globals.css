@@ -1,52 +1,176 @@
 @import "tailwindcss";
 
-@theme {
-  --color-bg: #090b0c;
-  --color-panel: #101315;
-  --color-panel-2: #15191b;
-  --color-line: #252a2b;
-  --color-gold: #d4ae61;
-  --color-gold-2: #f2d690;
-  --color-cream: #f4efe5;
-  --color-muted: #9fa5a3;
-  --color-success: #67bd8c;
-  --color-danger: #dd706b;
-  --color-info: #7eb8d9;
-  --color-purple: #b48dd5;
+/* ---------------------------------------------------------------------------
+   Active Theory — Style Reference
+   Cosmic void canvas, whispered ghost chrome, one rationed violet accent.
+   See CLAUDE.md for the full design system.
+--------------------------------------------------------------------------- */
 
-  --font-display: var(--font-playfair);
-  --font-sans: var(--font-manrope);
-  --font-mono: var(--font-dm-mono);
+@theme {
+  /* Colors */
+  --color-void-black: #000000;
+  --color-ghost-white: #ffffff;
+  --color-ash-border: #4d4d4d;
+  --color-smoke: #808080;
+  --color-fog: #999999;
+  --color-pale-mist: #c6c6c6;
+  --color-dusk-violet: #343755;
+
+  /* Functional state hue — documented deviation from the single-accent rule.
+     Errors and destructive actions need a non-textual signal; kept low-chroma
+     so it sits beside Dusk Violet instead of competing with it. */
+  --color-alert: #a4636b;
+
+  /* Typography — Font Families
+     nbarchitekt is substituted by Space Grotesk (the reference's own
+     recommendation) and loaded via next/font in app/layout.tsx. */
+  --font-nbarchitekt: var(--font-space-grotesk), ui-sans-serif, system-ui,
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-times: "Times", "Times New Roman", Georgia, ui-serif, serif;
+  --font-arial: "Arial", ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-caption: 10px;
+  --text-caption--line-height: 1.5;
+  --text-body-sm: 12px;
+  --text-body-sm--line-height: 1.5;
+  --text-body: 14px;
+  --text-body--line-height: 1.5;
+
+  /* Border Radius — either a sharp ghost rectangle (5px), a card (12px)
+     or a full pill (500px). Nothing in between. */
+  --radius-md: 5px;
+  --radius-xl: 12px;
+  --radius-full: 500px;
+}
+
+:root {
+  /* Reference spacing scale from the style guide. These are consumed through
+     var() in the component layer and in arbitrary values — Tailwind's own
+     numeric scale (p-4, gap-6, …) is deliberately left untouched so existing
+     layout keeps its rem-based rhythm. */
+  --spacing-4: 4px;
+  --spacing-6: 6px;
+  --spacing-12: 12px;
+  --spacing-13: 13px;
+  --spacing-14: 14px;
+  --spacing-16: 16px;
+  --spacing-18: 18px;
+  --spacing-28: 28px;
+
+  /* Layout */
+  --section-gap: 48px;
+  --card-padding: 28px;
+  --element-gap: 6px;
+
+  /* Named radii */
+  --radius-tags: 500px;
+  --radius-cards: 12px;
+  --radius-inputs: 5px;
+  --radius-buttons-pill: 500px;
+  --radius-buttons-ghost: 5px;
+
+  /* Surfaces — elevation comes from stacked translucency, never shadow */
+  --surface-void-canvas: #000000;
+  --surface-translucent-overlay: #00000080;
+  --surface-dusk-violet-surface: #343755;
+  --surface-frosted-glass: #ffffff1a;
 }
 
 body {
-  background: var(--color-bg);
-  color: var(--color-cream);
+  background: var(--surface-void-canvas);
+  color: var(--color-ghost-white);
 }
 
 @layer components {
+  /* --- Chrome ----------------------------------------------------------- */
+
   .eyebrow {
-    @apply text-gold font-mono text-[11px] tracking-[1.6px] uppercase;
+    @apply font-nbarchitekt text-[10px] uppercase tracking-[1.6px] text-pale-mist;
   }
 
-  .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-gold bg-gradient-to-br from-[#dcb967] to-[#a87d32] px-5 py-3 text-xs font-extrabold tracking-wide text-[#17120b] transition hover:-translate-y-px hover:brightness-110;
+  /* Body prose. The serif is the deliberate editorial counterpoint to the
+     geometric UI sans — never set running copy in nbarchitekt. */
+  .copy {
+    @apply font-times text-[16px] leading-[1.88] text-ghost-white;
   }
+  .copy-muted {
+    @apply font-times text-[16px] leading-[1.88] text-pale-mist;
+  }
+
+  /* --- Buttons ---------------------------------------------------------- */
+
+  /* Filled pill CTA — the only chromatic surface in the system. Label is
+     ghost white rather than the reference's black: black on #343755 lands at
+     ~1.9:1 contrast, well under any accessible threshold. */
+  .btn-pill {
+    @apply inline-flex items-center justify-center gap-2 rounded-[var(--radius-buttons-pill)]
+      bg-dusk-violet px-[18px] py-2 font-nbarchitekt text-[14px] font-bold
+      text-ghost-white transition-opacity duration-200 ease-out hover:opacity-80
+      disabled:opacity-50;
+  }
+
+  /* Neutral tonal pill — same shape, no chromatic commitment. */
+  .btn-pill-neutral {
+    @apply inline-flex items-center justify-center gap-2 rounded-[var(--radius-buttons-pill)]
+      border border-ash-border bg-black/40 px-[18px] py-2 font-nbarchitekt
+      text-[14px] font-bold text-ghost-white backdrop-blur-[4px]
+      transition-opacity duration-200 ease-out hover:opacity-80 disabled:opacity-50;
+  }
+
+  /* Ghost rectangle — hairline chrome that dissolves into the canvas. */
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-gold/70 bg-transparent px-5 py-3 text-xs font-extrabold tracking-wide text-gold-2 transition hover:brightness-110;
+    @apply inline-flex items-center justify-center gap-2 rounded-[var(--radius-buttons-ghost)]
+      border-2 border-white/60 bg-transparent px-3 py-2 font-nbarchitekt
+      text-[12px] font-normal uppercase tracking-wide text-ghost-white
+      transition-colors duration-200 ease-out hover:bg-white/10;
   }
 
+  /* Ultra-compact nav variant. The reference specifies 1px/6px padding; this
+     nav is a real navigation target, so the vertical padding is nudged to 4px
+     to keep the hit area clickable while staying whisper-thin. */
+  .btn-ghost-nav {
+    @apply inline-flex items-center justify-center rounded-[var(--radius-buttons-ghost)]
+      border-2 border-white/60 bg-transparent px-2.5 py-1 font-nbarchitekt
+      text-[10px] uppercase tracking-wide text-ghost-white
+      transition-colors duration-200 ease-out hover:bg-white/10 hover:text-ghost-white;
+  }
+
+  /* --- Surfaces --------------------------------------------------------- */
+
+  /* Boundaries come from a hairline border alone — the void cannot cast a
+     shadow, so there is never a box-shadow here. */
   .panel {
-    @apply rounded-lg border border-line bg-panel;
+    @apply rounded-[var(--radius-cards)] border border-ash-border bg-transparent;
   }
 
+  /* Overlay panel — frosted glass is how depth is communicated. */
+  .panel-overlay {
+    @apply rounded-[var(--radius-cards)] border border-ash-border bg-black/50
+      backdrop-blur-[4px];
+  }
+
+  .field {
+    @apply w-full rounded-[var(--radius-inputs)] border border-fog/60 bg-white/[0.04]
+      px-3 py-2 font-nbarchitekt text-[14px] text-ghost-white
+      transition-colors duration-200 ease-out outline-none
+      placeholder:text-smoke focus:border-white/60;
+  }
+
+  /* --- Status ----------------------------------------------------------- */
+
+  /* States are signalled by fill weight first and hue second, so the system
+     stays legible in a palette that is otherwise achromatic. */
   .status-pill {
-    @apply inline-block rounded-full bg-[#243c31] px-2 py-1 font-mono text-[10px] text-[#8ad4a5];
+    @apply inline-block rounded-[var(--radius-tags)] border border-ash-border
+      bg-white/[0.06] px-2 py-1 font-nbarchitekt text-[10px] uppercase
+      tracking-wide text-pale-mist;
   }
   .status-pill-warn {
-    @apply bg-[#493b1c] text-[#e0bd6d];
+    @apply border-white/60 bg-white/10 font-bold text-ghost-white;
   }
   .status-pill-red {
-    @apply bg-[#482524] text-[#ed9e9a];
+    @apply border-alert/60 bg-alert/15 font-bold text-alert;
   }
 }

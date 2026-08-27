@@ -6,7 +6,7 @@ export const metadata = { title: "Dashboard — Bigode Grosso" };
 function RevenueChart({ points }: { points: [string, number][] }) {
   if (points.length < 2) {
     return (
-      <div className="grid h-[210px] place-items-center text-xs text-muted">
+      <div className="grid h-[210px] place-items-center text-xs text-pale-mist">
         Ainda sem dados suficientes para o gráfico.
       </div>
     );
@@ -22,10 +22,10 @@ function RevenueChart({ points }: { points: [string, number][] }) {
     .join(" ");
 
   return (
-    <div className="h-[210px] overflow-hidden bg-[repeating-linear-gradient(0deg,transparent_0_41px,#293032_42px)]">
+    <div className="h-[210px] overflow-hidden bg-[repeating-linear-gradient(0deg,transparent_0_41px,#1c1c1c_42px)]">
       <svg viewBox="0 0 500 210" preserveAspectRatio="none" className="h-full w-full">
-        <polyline fill="none" stroke="#d4ae61" strokeWidth="3" points={coords} />
-        <polyline fill="none" stroke="#f2d69033" strokeWidth="18" points={coords} />
+        <polyline fill="none" stroke="#ffffff" strokeWidth="2" points={coords} />
+        <polyline fill="none" stroke="#34375566" strokeWidth="18" points={coords} />
       </svg>
     </div>
   );
@@ -36,10 +36,10 @@ export default async function AdminDashboardPage() {
 
   return (
     <>
-      <header className="flex h-[70px] items-center justify-between border-b border-line px-7.5">
+      <header className="flex h-[70px] items-center justify-between border-b border-ash-border px-7.5">
         <div>
-          <h1 className="font-display text-2xl font-semibold">Bom dia.</h1>
-          <div className="text-xs text-muted">
+          <h1 className="font-nbarchitekt text-2xl font-semibold">Bom dia.</h1>
+          <div className="text-xs text-pale-mist">
             Visão geral da operação em tempo real
           </div>
         </div>
@@ -53,8 +53,8 @@ export default async function AdminDashboardPage() {
             ["Clientes cadastrados", String(data.customersCount)],
           ].map(([label, value]) => (
             <article key={label} className="panel p-4.5">
-              <span className="text-[11px] text-muted">{label}</span>
-              <b className="my-1.5 block font-display text-2xl font-medium">
+              <span className="text-[11px] text-pale-mist">{label}</span>
+              <b className="my-1.5 block font-nbarchitekt text-2xl font-medium">
                 {value}
               </b>
             </article>
@@ -65,17 +65,17 @@ export default async function AdminDashboardPage() {
           <section className="panel p-4.5">
             <h3 className="mb-4 text-[13px]">Agenda de hoje</h3>
             {data.todayAppointments.length === 0 ? (
-              <p className="text-xs text-muted">Nenhum agendamento para hoje.</p>
+              <p className="text-xs text-pale-mist">Nenhum agendamento para hoje.</p>
             ) : (
               data.todayAppointments.map((a) => (
                 <div
                   key={a.id}
-                  className="flex items-center justify-between border-b border-line py-2.5 text-xs last:border-0"
+                  className="flex items-center justify-between border-b border-ash-border py-2.5 text-xs last:border-0"
                 >
                   <span>
                     <b>{a.time}</b> &nbsp;{a.customerName}
                     <br />
-                    <small className="text-muted">
+                    <small className="text-pale-mist">
                       {a.serviceName} · {a.professionalName}
                     </small>
                   </span>
@@ -87,12 +87,12 @@ export default async function AdminDashboardPage() {
           <aside className="panel p-4.5">
             <h3 className="mb-4 text-[13px]">Alertas de estoque</h3>
             {data.stockAlerts.length === 0 ? (
-              <p className="text-xs text-muted">Nenhum alerta no momento.</p>
+              <p className="text-xs text-pale-mist">Nenhum alerta no momento.</p>
             ) : (
               data.stockAlerts.map((item) => (
                 <div
                   key={item.id}
-                  className="flex items-center justify-between border-b border-line py-2.5 text-xs last:border-0"
+                  className="flex items-center justify-between border-b border-ash-border py-2.5 text-xs last:border-0"
                 >
                   <span>{item.name}</span>
                   <span
@@ -114,12 +114,12 @@ export default async function AdminDashboardPage() {
           <section className="panel p-4.5">
             <h3 className="mb-4 text-[13px]">Serviços mais realizados</h3>
             {data.topServices.length === 0 ? (
-              <p className="text-xs text-muted">Sem dados este mês.</p>
+              <p className="text-xs text-pale-mist">Sem dados este mês.</p>
             ) : (
               data.topServices.map(([name, count]) => (
                 <div
                   key={name}
-                  className="flex items-center justify-between border-b border-line py-2.5 text-xs last:border-0"
+                  className="flex items-center justify-between border-b border-ash-border py-2.5 text-xs last:border-0"
                 >
                   <span>{name}</span>
                   <b>{count} atend.</b>

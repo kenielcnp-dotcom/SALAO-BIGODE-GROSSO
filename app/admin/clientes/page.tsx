@@ -16,10 +16,10 @@ export default async function ClientesPage() {
 
   return (
     <>
-      <header className="flex h-[70px] items-center justify-between border-b border-line px-7.5">
+      <header className="flex h-[70px] items-center justify-between border-b border-ash-border px-7.5">
         <div>
-          <h1 className="font-display text-2xl font-semibold">Clientes CRM</h1>
-          <div className="text-xs text-muted">
+          <h1 className="font-nbarchitekt text-2xl font-semibold">Clientes CRM</h1>
+          <div className="text-xs text-pale-mist">
             Relacionamento, preferências e oportunidades de retorno
           </div>
         </div>
@@ -27,12 +27,12 @@ export default async function ClientesPage() {
       <div className="p-7.5">
         <section className="panel p-4.5">
           {customers.length === 0 ? (
-            <p className="text-xs text-muted">Nenhum cliente cadastrado ainda.</p>
+            <p className="text-xs text-pale-mist">Nenhum cliente cadastrado ainda.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-line text-left text-[#858d8c]">
+                  <tr className="border-b border-ash-border text-left text-fog">
                     <th className="p-2.5 font-medium">CLIENTE</th>
                     <th className="p-2.5 font-medium">TELEFONE</th>
                     <th className="p-2.5 font-medium">ÚLTIMA VISITA</th>
@@ -45,7 +45,7 @@ export default async function ClientesPage() {
                 </thead>
                 <tbody>
                   {customers.map((c) => (
-                    <tr key={c.id} className="border-b border-line last:border-0">
+                    <tr key={c.id} className="border-b border-ash-border last:border-0">
                       <td className="p-2.5">
                         <b>{c.fullName}</b>
                       </td>
@@ -81,7 +81,7 @@ export default async function ClientesPage() {
                               </option>
                             ))}
                           </select>
-                          <button type="submit" className="text-gold" title="Salvar">
+                          <button type="submit" className="text-pale-mist" title="Salvar">
                             ✓
                           </button>
                         </form>

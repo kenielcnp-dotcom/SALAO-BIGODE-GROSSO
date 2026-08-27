@@ -11,10 +11,10 @@ export default async function ProdutosPage() {
 
   return (
     <>
-      <header className="flex h-[70px] items-center justify-between border-b border-line px-7.5">
+      <header className="flex h-[70px] items-center justify-between border-b border-ash-border px-7.5">
         <div>
-          <h1 className="font-display text-2xl font-semibold">Produtos</h1>
-          <div className="text-xs text-muted">
+          <h1 className="font-nbarchitekt text-2xl font-semibold">Produtos</h1>
+          <div className="text-xs text-pale-mist">
             Catálogo de produtos à venda no balcão
           </div>
         </div>

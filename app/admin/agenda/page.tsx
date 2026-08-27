@@ -29,10 +29,10 @@ export default async function AgendaPage({
 
   return (
     <>
-      <header className="flex h-[70px] items-center justify-between border-b border-line px-7.5">
+      <header className="flex h-[70px] items-center justify-between border-b border-ash-border px-7.5">
         <div>
-          <h1 className="font-display text-2xl font-semibold">Agenda</h1>
-          <div className="text-xs text-muted">
+          <h1 className="font-nbarchitekt text-2xl font-semibold">Agenda</h1>
+          <div className="text-xs text-pale-mist">
             Gerencie confirmações, encaixes e atendimentos
           </div>
         </div>
@@ -53,12 +53,12 @@ export default async function AgendaPage({
         <section className="panel p-4.5">
           <h3 className="mb-4 text-[13px] capitalize">{formattedDate}</h3>
           {appointments.length === 0 ? (
-            <p className="text-xs text-muted">Nenhum agendamento nesse dia.</p>
+            <p className="text-xs text-pale-mist">Nenhum agendamento nesse dia.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-line text-left text-[#858d8c]">
+                  <tr className="border-b border-ash-border text-left text-fog">
                     <th className="p-2.5 font-medium">HORÁRIO</th>
                     <th className="p-2.5 font-medium">CLIENTE</th>
                     <th className="p-2.5 font-medium">SERVIÇO</th>
@@ -69,12 +69,12 @@ export default async function AgendaPage({
                 </thead>
                 <tbody>
                   {appointments.map((a) => (
-                    <tr key={a.id} className="border-b border-line last:border-0">
+                    <tr key={a.id} className="border-b border-ash-border last:border-0">
                       <td className="p-2.5">{a.time}</td>
                       <td className="p-2.5">
                         <b>{a.customerName}</b>
                         <br />
-                        <span className="text-muted">{a.customerPhone}</span>
+                        <span className="text-pale-mist">{a.customerPhone}</span>
                       </td>
                       <td className="p-2.5">{a.serviceName}</td>
                       <td className="p-2.5">{a.professionalName}</td>
@@ -95,12 +95,12 @@ export default async function AgendaPage({
                                 a.status,
                               )}
                             >
-                              <button type="submit" className="text-gold">
+                              <button type="submit" className="text-pale-mist">
                                 Avançar
                               </button>
                             </form>
                             <form action={cancelAppointment.bind(null, a.id)}>
-                              <button type="submit" className="text-danger">
+                              <button type="submit" className="text-alert">
                                 Cancelar
                               </button>
                             </form>

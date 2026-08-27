@@ -10,14 +10,14 @@ export function DataTable({
   emptyLabel: string;
 }) {
   if (rows.length === 0) {
-    return <p className="text-xs text-muted">{emptyLabel}</p>;
+    return <p className="text-xs text-pale-mist">{emptyLabel}</p>;
   }
 
   return (
     <div className="overflow-x-auto">
       <table className="w-full text-xs">
         <thead>
-          <tr className="border-b border-line text-left text-[#858d8c]">
+          <tr className="border-b border-ash-border text-left text-fog">
             {headers.map((h) => (
               <th key={h} className="p-2.5 font-medium">
                 {h}
@@ -27,7 +27,7 @@ export function DataTable({
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className="border-b border-line last:border-0">
+            <tr key={i} className="border-b border-ash-border last:border-0">
               {row.map((cell, j) => (
                 <td key={j} className="p-2.5">
                   {cell}

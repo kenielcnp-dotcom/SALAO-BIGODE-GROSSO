@@ -1,23 +1,15 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Manrope, DM_Mono } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+/**
+ * nbarchitekt is not publicly licensed; Space Grotesk is the substitute named
+ * in the style reference — a geometric sans with comparable x-height.
+ */
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-});
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
-
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -27,11 +19,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="pt-BR"
-      className={`${playfair.variable} ${manrope.variable} ${dmMono.variable}`}
-    >
-      <body className="min-h-screen bg-bg font-sans text-[14px] text-cream antialiased">
+    <html lang="pt-BR" className={spaceGrotesk.variable}>
+      <body className="min-h-screen bg-void-black font-nbarchitekt text-[14px] text-ghost-white antialiased">
         {children}
       </body>
     </html>

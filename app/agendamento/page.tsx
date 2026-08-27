@@ -21,7 +21,7 @@ export default async function AgendamentoPage({
       <Nav />
       <main className="px-[7vw] py-[58px]">
         <div className="eyebrow">Agendamento online</div>
-        <h1 className="my-2 font-display text-[45px] font-semibold">
+        <h1 className="my-2 font-nbarchitekt text-[45px] font-semibold">
           Em poucos passos, você reserva o seu melhor horário.
         </h1>
         <BookingWizard

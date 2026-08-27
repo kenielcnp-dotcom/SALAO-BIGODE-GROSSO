@@ -9,17 +9,17 @@ export default async function AdminProfissionaisPage() {
 
   return (
     <>
-      <header className="flex h-[70px] items-center justify-between border-b border-line px-7.5">
+      <header className="flex h-[70px] items-center justify-between border-b border-ash-border px-7.5">
         <div>
-          <h1 className="font-display text-2xl font-semibold">Profissionais</h1>
-          <div className="text-xs text-muted">
+          <h1 className="font-nbarchitekt text-2xl font-semibold">Profissionais</h1>
+          <div className="text-xs text-pale-mist">
             Gerencie informações, disponibilidade e status
           </div>
         </div>
       </header>
       <div className="p-7.5">
         <details className="panel mb-4.5 p-4.5">
-          <summary className="cursor-pointer text-xs font-extrabold text-gold">
+          <summary className="cursor-pointer text-xs font-extrabold text-pale-mist">
             ＋ NOVO PROFISSIONAL
           </summary>
           <form
@@ -37,20 +37,20 @@ export default async function AdminProfissionaisPage() {
               name="fullName"
               required
               placeholder="Nome completo"
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+              className="field"
             />
             <input
               name="specialty"
               placeholder="Especialidade"
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+              className="field"
             />
             <input
               name="initials"
               maxLength={2}
               placeholder="Iniciais (ex: JO)"
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+              className="field"
             />
-            <button type="submit" className="btn-gold sm:col-span-3">
+            <button type="submit" className="btn-pill sm:col-span-3">
               SALVAR PROFISSIONAL
             </button>
           </form>

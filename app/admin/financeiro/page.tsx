@@ -15,10 +15,10 @@ export default async function FinanceiroPage() {
 
   return (
     <>
-      <header className="flex h-[70px] items-center justify-between border-b border-line px-7.5">
+      <header className="flex h-[70px] items-center justify-between border-b border-ash-border px-7.5">
         <div>
-          <h1 className="font-display text-2xl font-semibold">Financeiro</h1>
-          <div className="text-xs text-muted">
+          <h1 className="font-nbarchitekt text-2xl font-semibold">Financeiro</h1>
+          <div className="text-xs text-pale-mist">
             Receitas, despesas e performance do negócio
           </div>
         </div>
@@ -28,12 +28,12 @@ export default async function FinanceiroPage() {
           <section className="panel p-4.5">
             <h3 className="mb-4 text-[13px]">Serviços realizados — este mês</h3>
             {dashboard.topServices.length === 0 ? (
-              <p className="text-xs text-muted">Sem dados este mês.</p>
+              <p className="text-xs text-pale-mist">Sem dados este mês.</p>
             ) : (
               dashboard.topServices.map(([name, count]) => (
                 <div
                   key={name}
-                  className="flex items-center justify-between border-b border-line py-2.5 text-xs last:border-0"
+                  className="flex items-center justify-between border-b border-ash-border py-2.5 text-xs last:border-0"
                 >
                   <span>{name}</span>
                   <b>{count} atend.</b>
@@ -43,17 +43,17 @@ export default async function FinanceiroPage() {
           </section>
           <section className="panel p-4.5">
             <h3 className="mb-4 text-[13px]">Resumo</h3>
-            <div className="flex items-center justify-between border-b border-line py-2.5 text-xs">
+            <div className="flex items-center justify-between border-b border-ash-border py-2.5 text-xs">
               <span>Faturamento do mês</span>
               <b>{formatMoney(dashboard.monthRevenue)}</b>
             </div>
-            <div className="flex items-center justify-between border-b border-line py-2.5 text-xs">
+            <div className="flex items-center justify-between border-b border-ash-border py-2.5 text-xs">
               <span>Despesas do mês</span>
               <b>{formatMoney(totalExpenses)}</b>
             </div>
             <div className="flex items-center justify-between py-2.5 text-xs">
               <span>Lucro estimado</span>
-              <b className={profit >= 0 ? "text-success" : "text-danger"}>
+              <b className={profit >= 0 ? "text-ghost-white" : "text-alert"}>
                 {formatMoney(profit)}
               </b>
             </div>
@@ -61,7 +61,7 @@ export default async function FinanceiroPage() {
         </div>
 
         <details className="panel mt-3.5 p-4.5">
-          <summary className="cursor-pointer text-xs font-extrabold text-gold">
+          <summary className="cursor-pointer text-xs font-extrabold text-pale-mist">
             ＋ NOVA DESPESA
           </summary>
           <form
@@ -80,12 +80,12 @@ export default async function FinanceiroPage() {
               name="description"
               required
               placeholder="Descrição"
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee] sm:col-span-2"
+              className="field sm:col-span-2"
             />
             <input
               name="category"
               placeholder="Categoria"
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+              className="field"
             />
             <input
               name="amount"
@@ -93,16 +93,16 @@ export default async function FinanceiroPage() {
               step="0.01"
               required
               placeholder="Valor (R$)"
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+              className="field"
             />
             <input
               name="expenseDate"
               type="date"
               required
               defaultValue={new Date().toISOString().slice(0, 10)}
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+              className="field"
             />
-            <button type="submit" className="btn-gold sm:col-span-3">
+            <button type="submit" className="btn-pill sm:col-span-3">
               SALVAR DESPESA
             </button>
           </form>
@@ -111,12 +111,12 @@ export default async function FinanceiroPage() {
         <section className="panel mt-3.5 p-4.5">
           <h3 className="mb-4 text-[13px]">Despesas recentes</h3>
           {expenses.length === 0 ? (
-            <p className="text-xs text-muted">Nenhuma despesa registrada.</p>
+            <p className="text-xs text-pale-mist">Nenhuma despesa registrada.</p>
           ) : (
             expenses.map((e) => (
               <div
                 key={e.id}
-                className="flex items-center justify-between border-b border-line py-2.5 text-xs last:border-0"
+                className="flex items-center justify-between border-b border-ash-border py-2.5 text-xs last:border-0"
               >
                 <span>
                   {e.description}

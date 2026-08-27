@@ -13,16 +13,16 @@ export default async function ServicosPage() {
       <Nav />
       <main className="px-[7vw] py-[58px]">
         <div className="eyebrow">A experiência Bigode Grosso</div>
-        <h1 className="my-2 font-display text-[45px] font-semibold">
+        <h1 className="my-2 font-nbarchitekt text-[45px] font-semibold">
           Escolha o seu ritual.
         </h1>
-        <p className="max-w-[610px] leading-[1.7] text-muted">
+        <p className="copy-muted max-w-[610px]">
           Técnica precisa, produtos selecionados e profissionais que
           respeitam a sua identidade.
         </p>
         <div className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service, i) => (
-            <ServiceCard key={service.id} service={service} index={i} />
+          {services.map((service) => (
+            <ServiceCard key={service.id} service={service} />
           ))}
         </div>
       </main>

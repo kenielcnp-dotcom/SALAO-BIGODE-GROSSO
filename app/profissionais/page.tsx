@@ -13,7 +13,7 @@ export default async function ProfissionaisPage() {
       <Nav />
       <main className="px-[7vw] py-[58px]">
         <div className="eyebrow">Time de especialistas</div>
-        <h1 className="my-2 font-display text-[45px] font-semibold">
+        <h1 className="my-2 font-nbarchitekt text-[45px] font-semibold">
           Profissionais de presença.
         </h1>
         <div className="mt-9 grid grid-cols-1 gap-4.5 md:grid-cols-3">

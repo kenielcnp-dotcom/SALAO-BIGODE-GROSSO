@@ -12,7 +12,7 @@ export default async function AdminLayout({
   await requireOwnerPage();
 
   return (
-    <div className="grid min-h-screen bg-[#0c0f10] md:grid-cols-[244px_1fr]">
+    <div className="grid min-h-screen bg-void-black md:grid-cols-[244px_1fr]">
       <AdminSidebar />
       <main className="min-w-0">{children}</main>
     </div>

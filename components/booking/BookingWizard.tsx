@@ -160,18 +160,18 @@ export function BookingWizard({
   if (bookingCode) {
     return (
       <div className="panel p-11 text-center">
-        <div className="font-display text-5xl text-success">✓</div>
+        <div className="font-nbarchitekt text-5xl text-ghost-white">✓</div>
         <div className="eyebrow mt-4">Agendamento confirmado</div>
-        <h2 className="my-2 font-display text-3xl font-medium">Até breve.</h2>
-        <p className="mx-auto mb-5 max-w-md text-muted">
+        <h2 className="my-2 font-nbarchitekt text-3xl font-medium">Até breve.</h2>
+        <p className="mx-auto mb-5 max-w-md text-pale-mist">
           Seu horário foi enviado para nossa agenda. Vamos cuidar de cada
           detalhe.
         </p>
-        <div className="inline-block rounded-md bg-[#191d1e] px-4 py-2.5 font-mono text-lg text-gold-2">
+        <div className="inline-block rounded-md bg-white/[0.06] px-4 py-2.5 font-nbarchitekt text-lg text-ghost-white">
           {bookingCode}
         </div>
         <div className="mt-6 flex justify-center gap-3">
-          <Link href="/minha-conta" className="btn-gold">
+          <Link href="/minha-conta" className="btn-pill">
             MINHA CONTA
           </Link>
         </div>
@@ -187,15 +187,15 @@ export function BookingWizard({
             key={label}
             className={`flex items-center gap-2 text-xs ${
               step === i + 1
-                ? "text-gold-2"
+                ? "text-ghost-white"
                 : step > i + 1
-                  ? "text-gold-2"
-                  : "text-[#666]"
+                  ? "text-ghost-white"
+                  : "text-smoke"
             }`}
           >
             <i
               className={`grid h-6.5 w-6.5 place-items-center rounded-full border not-italic ${
-                step >= i + 1 ? "border-gold bg-[#3a2d18]" : "border-[#475052]"
+                step >= i + 1 ? "border-white/60 bg-dusk-violet" : "border-ash-border"
               }`}
             >
               {step > i + 1 ? "✓" : i + 1}
@@ -212,17 +212,17 @@ export function BookingWizard({
               <button
                 key={s.id}
                 onClick={() => selectService(s.id)}
-                className={`rounded-lg border p-4 text-left ${
+                className={`rounded-xl border p-4 text-left ${
                   serviceId === s.id
-                    ? "border-gold bg-[#201b12]"
-                    : "border-line bg-[#121617]"
+                    ? "border-white/60 bg-dusk-violet"
+                    : "border-ash-border bg-white/[0.04]"
                 }`}
               >
                 <b className="mb-1 flex justify-between">
                   {s.name}
-                  <span className="text-gold-2">{formatMoney(s.price)}</span>
+                  <span className="text-ghost-white">{formatMoney(s.price)}</span>
                 </b>
-                <small className="text-muted">
+                <small className="text-pale-mist">
                   {s.description} · {s.durationMinutes} min
                 </small>
               </button>
@@ -236,21 +236,21 @@ export function BookingWizard({
               <button
                 key={p.id}
                 onClick={() => selectProfessional(p.id)}
-                className={`rounded-lg border p-4 text-left ${
+                className={`rounded-xl border p-4 text-left ${
                   professionalId === p.id
-                    ? "border-gold bg-[#201b12]"
-                    : "border-line bg-[#121617]"
+                    ? "border-white/60 bg-dusk-violet"
+                    : "border-ash-border bg-white/[0.04]"
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <div className="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-gold to-[#4c3516] font-display font-bold text-[#101010]">
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-dusk-violet font-nbarchitekt font-bold text-ghost-white">
                     {p.initials}
                   </div>
                   <span>
                     <b className="block">{p.fullName}</b>
-                    <small className="text-muted">{p.specialty}</small>
+                    <small className="text-pale-mist">{p.specialty}</small>
                   </span>
-                  <span className="ml-auto text-gold">★ {p.rating}</span>
+                  <span className="ml-auto text-pale-mist">★ {p.rating}</span>
                 </div>
               </button>
             ))}
@@ -262,7 +262,7 @@ export function BookingWizard({
             <div className="mb-3.5 flex items-center justify-between">
               <button
                 type="button"
-                className="text-gold"
+                className="text-pale-mist"
                 onClick={() =>
                   setViewMonth(
                     new Date(viewMonth.getFullYear(), viewMonth.getMonth() - 1, 1),
@@ -276,7 +276,7 @@ export function BookingWizard({
               </div>
               <button
                 type="button"
-                className="text-gold"
+                className="text-pale-mist"
                 onClick={() =>
                   setViewMonth(
                     new Date(viewMonth.getFullYear(), viewMonth.getMonth() + 1, 1),
@@ -288,7 +288,7 @@ export function BookingWizard({
             </div>
             <div className="grid grid-cols-7 gap-1.5">
               {WEEKDAY_HEADERS.map((h, i) => (
-                <div key={i} className="text-center font-mono text-xs text-muted">
+                <div key={i} className="text-center font-nbarchitekt text-xs text-pale-mist">
                   {h}
                 </div>
               ))}
@@ -312,10 +312,10 @@ export function BookingWizard({
                     onClick={() => pickDate(d)}
                     className={`rounded-md p-2.5 text-center ${
                       past
-                        ? "text-[#444]"
+                        ? "text-smoke"
                         : selected
-                          ? "bg-[#4a381b] text-gold-2"
-                          : "bg-[#171c1d] text-[#eee] hover:bg-[#4a381b]"
+                          ? "bg-dusk-violet text-ghost-white"
+                          : "bg-white/[0.06] text-ghost-white hover:bg-dusk-violet"
                     }`}
                   >
                     {i + 1}
@@ -330,17 +330,17 @@ export function BookingWizard({
             </b>
             <div className="mt-3.5 grid grid-cols-3 gap-2 sm:grid-cols-4">
               {loadingSlots && (
-                <span className="col-span-full text-xs text-muted">
+                <span className="col-span-full text-xs text-pale-mist">
                   Buscando horários…
                 </span>
               )}
               {!loadingSlots && slotsError && (
-                <span className="col-span-full text-xs text-danger">
+                <span className="col-span-full text-xs text-alert">
                   {slotsError}
                 </span>
               )}
               {!loadingSlots && !slotsError && date && slots.length === 0 && (
-                <span className="col-span-full text-xs text-muted">
+                <span className="col-span-full text-xs text-pale-mist">
                   Sem horários disponíveis nesse dia.
                 </span>
               )}
@@ -352,8 +352,8 @@ export function BookingWizard({
                     onClick={() => setTime(t)}
                     className={`rounded-md border p-2.5 text-center ${
                       time === t
-                        ? "border-gold bg-[#4a381b] text-gold-2"
-                        : "border-line bg-[#181d1e] text-[#ddd]"
+                        ? "border-white/60 bg-dusk-violet text-ghost-white"
+                        : "border-ash-border bg-white/[0.04] text-ghost-white"
                     }`}
                   >
                     {t}
@@ -365,49 +365,49 @@ export function BookingWizard({
 
         {step === 4 && (
           <div className="grid grid-cols-1 gap-3.5 sm:grid-cols-2">
-            <label className="grid gap-1.5 text-xs text-[#aaa]">
+            <label className="grid gap-1.5 text-xs text-pale-mist">
               NOME COMPLETO
               <input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Como podemos chamar você?"
-                className="w-full rounded-md border border-[#353c3e] bg-[#0d1011] p-3 text-[#eee]"
+                className="field"
               />
             </label>
-            <label className="grid gap-1.5 text-xs text-[#aaa]">
+            <label className="grid gap-1.5 text-xs text-pale-mist">
               WHATSAPP
               <input
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="(65) 9 9999-9999"
-                className="w-full rounded-md border border-[#353c3e] bg-[#0d1011] p-3 text-[#eee]"
+                className="field"
               />
             </label>
-            <label className="grid gap-1.5 text-xs text-[#aaa]">
+            <label className="grid gap-1.5 text-xs text-pale-mist">
               E-MAIL (OPCIONAL)
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="seu@email.com"
-                className="w-full rounded-md border border-[#353c3e] bg-[#0d1011] p-3 text-[#eee]"
+                className="field"
               />
             </label>
-            <label className="grid gap-1.5 text-xs text-[#aaa] sm:col-span-2">
+            <label className="grid gap-1.5 text-xs text-pale-mist sm:col-span-2">
               OBSERVAÇÃO (OPCIONAL)
               <textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Alguma preferência?"
-                className="w-full rounded-md border border-[#353c3e] bg-[#0d1011] p-3 text-[#eee]"
+                className="field"
               />
             </label>
           </div>
         )}
 
         {step === 5 && service && professional && date && time && (
-          <div className="rounded-xl border border-[#69522c] bg-gradient-to-br from-[#2a2112] to-[#121616] p-7">
+          <div className="panel-overlay p-7">
             <div className="eyebrow">Tudo certo?</div>
-            <h2 className="my-2 font-display text-2xl font-medium">
+            <h2 className="my-2 font-nbarchitekt text-2xl font-medium">
               Seu momento está reservado.
             </h2>
             <div className="grid gap-3">
@@ -419,22 +419,22 @@ export function BookingWizard({
               ].map(([label, value]) => (
                 <div
                   key={label}
-                  className="flex justify-between border-b border-line pb-2.5 text-muted"
+                  className="flex justify-between border-b border-ash-border pb-2.5 text-pale-mist"
                 >
                   <span>{label}</span>
-                  <b className="text-cream">{value}</b>
+                  <b className="text-ghost-white">{value}</b>
                 </div>
               ))}
-              <div className="flex justify-between pb-2.5 text-muted">
+              <div className="flex justify-between pb-2.5 text-pale-mist">
                 <span>Valor</span>
-                <b className="text-gold-2">{formatMoney(service.price)}</b>
+                <b className="text-ghost-white">{formatMoney(service.price)}</b>
               </div>
             </div>
           </div>
         )}
 
         {formError && (
-          <p className="mt-4 rounded-md border border-danger/40 bg-danger/10 px-3 py-2 text-xs text-danger">
+          <p className="mt-4 rounded-md border border-alert/40 bg-alert/10 px-3 py-2 text-xs text-alert">
             {formError}
           </p>
         )}
@@ -447,7 +447,7 @@ export function BookingWizard({
           >
             ← VOLTAR
           </button>
-          <button type="button" onClick={next} disabled={submitting} className="btn-gold">
+          <button type="button" onClick={next} disabled={submitting} className="btn-pill">
             {submitting
               ? "CONFIRMANDO…"
               : step === 5

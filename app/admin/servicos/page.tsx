@@ -10,17 +10,17 @@ export default async function AdminServicosPage() {
 
   return (
     <>
-      <header className="flex h-[70px] items-center justify-between border-b border-line px-7.5">
+      <header className="flex h-[70px] items-center justify-between border-b border-ash-border px-7.5">
         <div>
-          <h1 className="font-display text-2xl font-semibold">Serviços</h1>
-          <div className="text-xs text-muted">
+          <h1 className="font-nbarchitekt text-2xl font-semibold">Serviços</h1>
+          <div className="text-xs text-pale-mist">
             Gerencie informações, disponibilidade e status
           </div>
         </div>
       </header>
       <div className="p-7.5">
         <details className="panel mb-4.5 p-4.5">
-          <summary className="cursor-pointer text-xs font-extrabold text-gold">
+          <summary className="cursor-pointer text-xs font-extrabold text-pale-mist">
             ＋ NOVO SERVIÇO
           </summary>
           <form
@@ -39,12 +39,12 @@ export default async function AdminServicosPage() {
               name="name"
               required
               placeholder="Nome do serviço"
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+              className="field"
             />
             <input
               name="description"
               placeholder="Descrição"
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+              className="field"
             />
             <input
               name="price"
@@ -52,16 +52,16 @@ export default async function AdminServicosPage() {
               step="0.01"
               required
               placeholder="Preço (R$)"
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+              className="field"
             />
             <input
               name="duration"
               type="number"
               required
               placeholder="Duração (min)"
-              className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+              className="field"
             />
-            <button type="submit" className="btn-gold sm:col-span-2">
+            <button type="submit" className="btn-pill sm:col-span-2">
               SALVAR SERVIÇO
             </button>
           </form>

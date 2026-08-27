@@ -14,27 +14,27 @@ export function Nav() {
   const pathname = usePathname();
 
   return (
-    <nav className="sticky top-0 z-30 flex h-[74px] items-center justify-between border-b border-[#1b2021] bg-bg/90 px-[5.5vw] backdrop-blur-2xl">
-      <Link href="/" className="font-display text-lg font-bold tracking-wide">
-        <b className="text-gold">✦</b> BIGODE GROSSO
+    <nav className="sticky top-0 z-30 flex h-[74px] items-center justify-between border-b border-ash-border bg-black/50 px-[5.5vw] backdrop-blur-[4px]">
+      <Link href="/" className="font-nbarchitekt text-lg font-bold tracking-wide">
+        <b className="text-ghost-white">✦</b> BIGODE GROSSO
       </Link>
-      <div className="hidden gap-6 md:flex">
+      <div className="hidden items-center gap-2 md:flex">
         {links.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className={
+            className={`btn-ghost-nav ${
               pathname === link.href
-                ? "text-gold-2"
-                : "text-muted hover:text-gold-2"
-            }
+                ? "bg-white/10"
+                : "border-white/25 text-pale-mist"
+            }`}
           >
             {link.label}
           </Link>
         ))}
       </div>
       <div className="flex gap-3">
-        <Link href="/agendamento" className="btn-gold">
+        <Link href="/agendamento" className="btn-pill">
           Agendar agora
         </Link>
       </div>

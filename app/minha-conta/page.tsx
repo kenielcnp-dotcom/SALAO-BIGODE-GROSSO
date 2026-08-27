@@ -20,10 +20,10 @@ export default async function MinhaContaPage({
       <Nav />
       <main className="px-[7vw] py-[58px]">
         <div className="eyebrow">Acompanhe seus agendamentos</div>
-        <h1 className="my-2 font-display text-[45px] font-semibold">
+        <h1 className="my-2 font-nbarchitekt text-[45px] font-semibold">
           Minha conta.
         </h1>
-        <p className="mb-9 max-w-[560px] text-muted">
+        <p className="copy-muted mb-9 max-w-[560px]">
           Informe o WhatsApp usado no agendamento e o código de confirmação
           (enviado ao final do agendamento, formato BG-0000) para ver seu
           histórico.
@@ -38,22 +38,22 @@ export default async function MinhaContaPage({
             defaultValue={phone}
             required
             placeholder="WhatsApp usado no agendamento"
-            className="rounded-md border border-[#353c3e] bg-[#0d1011] p-3 text-[#eee]"
+            className="field"
           />
           <input
             name="code"
             defaultValue={code}
             required
             placeholder="Código (BG-0000)"
-            className="rounded-md border border-[#353c3e] bg-[#0d1011] p-3 text-[#eee]"
+            className="field"
           />
-          <button type="submit" className="btn-gold">
+          <button type="submit" className="btn-pill">
             BUSCAR
           </button>
         </form>
 
         {searched && appointments.length === 0 && (
-          <p className="text-sm text-danger">
+          <p className="text-sm text-alert">
             Não encontramos agendamentos com esses dados. Confira o telefone e
             o código e tente novamente.
           </p>
@@ -65,7 +65,7 @@ export default async function MinhaContaPage({
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead>
-                  <tr className="border-b border-line text-left text-[#858d8c]">
+                  <tr className="border-b border-ash-border text-left text-fog">
                     <th className="p-2.5 font-medium">DATA</th>
                     <th className="p-2.5 font-medium">SERVIÇO</th>
                     <th className="p-2.5 font-medium">PROFISSIONAL</th>
@@ -75,7 +75,7 @@ export default async function MinhaContaPage({
                 </thead>
                 <tbody>
                   {appointments.map((a) => (
-                    <tr key={a.id} className="border-b border-line last:border-0">
+                    <tr key={a.id} className="border-b border-ash-border last:border-0">
                       <td className="p-2.5">
                         {new Date(a.scheduledDate + "T00:00:00").toLocaleDateString("pt-BR")}{" "}
                         · {a.scheduledTime}

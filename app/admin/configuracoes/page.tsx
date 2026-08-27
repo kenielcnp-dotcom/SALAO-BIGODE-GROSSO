@@ -8,10 +8,10 @@ export default async function ConfiguracoesPage() {
 
   return (
     <>
-      <header className="flex h-[70px] items-center border-b border-line px-7.5">
+      <header className="flex h-[70px] items-center border-b border-ash-border px-7.5">
         <div>
-          <h1 className="font-display text-2xl font-semibold">Configurações</h1>
-          <div className="text-xs text-muted">
+          <h1 className="font-nbarchitekt text-2xl font-semibold">Configurações</h1>
+          <div className="text-xs text-pale-mist">
             Personalize operação, acessos e comunicação
           </div>
         </div>
@@ -31,39 +31,39 @@ export default async function ConfiguracoesPage() {
             }}
             className="grid grid-cols-1 gap-3.5"
           >
-            <label className="grid gap-1.5 text-xs text-muted">
+            <label className="grid gap-1.5 text-xs text-pale-mist">
               NOME
               <input
                 name="name"
                 defaultValue={settings.name}
-                className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+                className="field"
               />
             </label>
-            <label className="grid gap-1.5 text-xs text-muted">
+            <label className="grid gap-1.5 text-xs text-pale-mist">
               WHATSAPP
               <input
                 name="whatsapp"
                 defaultValue={settings.whatsapp ?? ""}
-                className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+                className="field"
               />
             </label>
-            <label className="grid gap-1.5 text-xs text-muted">
+            <label className="grid gap-1.5 text-xs text-pale-mist">
               CIDADE
               <input
                 name="city"
                 defaultValue={settings.city ?? ""}
-                className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+                className="field"
               />
             </label>
-            <label className="grid gap-1.5 text-xs text-muted">
+            <label className="grid gap-1.5 text-xs text-pale-mist">
               E-MAIL
               <input
                 name="email"
                 defaultValue={settings.email ?? ""}
-                className="rounded-md border border-[#353c3e] bg-[#0d1011] p-2.5 text-[#eee]"
+                className="field"
               />
             </label>
-            <button type="submit" className="btn-gold">
+            <button type="submit" className="btn-pill">
               SALVAR ALTERAÇÕES
             </button>
           </form>
@@ -71,15 +71,15 @@ export default async function ConfiguracoesPage() {
 
         <section className="panel p-4.5">
           <h3 className="mb-4 text-[13px]">Acesso</h3>
-          <div className="flex items-center justify-between border-b border-line py-2.5 text-xs">
+          <div className="flex items-center justify-between border-b border-ash-border py-2.5 text-xs">
             <span>
               Proprietário
               <br />
-              <small className="text-muted">Acesso total ao painel</small>
+              <small className="text-pale-mist">Acesso total ao painel</small>
             </span>
             <span className="status-pill">Ativo</span>
           </div>
-          <p className="mt-4 text-xs text-muted">
+          <p className="mt-4 text-xs text-pale-mist">
             Este sistema tem um único usuário administrador. Novas contas não
             podem ser criadas por cadastro público — apenas pelo Supabase
             diretamente.
